@@ -41,8 +41,8 @@
         <label for="cuisine" class="control-label">
           Cuisine
         </label>
-
-        <input type="text" id="cuisine" name="cuisine" placeholder="Cuisine" class="form-control" value="<%= @venue.cuisine %>">
+  <%= select_tag(:cuisine, options_from_collection_for_select(Cuisine.all, :id, :cuisine_name, @venue.cuisine), :class => "form-control") %>
+        <!-- <input type="text" id="cuisine" name="cuisine" placeholder="Cuisine" class="form-control" value="<%= @venue.cuisine %>"> -->
       </div>
 
       <!-- Label and input for average_price -->
