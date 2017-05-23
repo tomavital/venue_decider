@@ -12,7 +12,11 @@
       <dd><%= @venue.address %></dd>
 
       <dt>Cuisine</dt>
-      <dd><%= @venue.cuisine %></dd>
+      <dd><a href="/cuisines/<%=@venue.cuisine%>">
+        <%= Cuisine.find_by(:id => @venue.cuisine).cuisine_name %>
+
+      </a></dd>
+
 
       <dt>Average price</dt>
       <dd><%= @venue.average_price %></dd>
