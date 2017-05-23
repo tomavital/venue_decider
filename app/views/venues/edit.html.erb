@@ -1,0 +1,73 @@
+<!-- Validation failure messages -->
+<% if @venue.errors.any? %>
+  <% @venue.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Venue #<%= @venue.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_venue/<%= @venue.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for name -->
+      <div class="form-group">
+        <label for="name" class="control-label">
+          Name
+        </label>
+
+        <textarea id="name" name="name" placeholder="Name" class="form-control" rows="3"><%= @venue.name %></textarea>
+      </div>
+
+      <!-- Label and input for address -->
+      <div class="form-group">
+        <label for="address" class="control-label">
+          Address
+        </label>
+
+        <textarea id="address" name="address" placeholder="Address" class="form-control" rows="3"><%= @venue.address %></textarea>
+      </div>
+
+      <!-- Label and input for cuisine -->
+      <div class="form-group">
+        <label for="cuisine" class="control-label">
+          Cuisine
+        </label>
+
+        <input type="text" id="cuisine" name="cuisine" placeholder="Cuisine" class="form-control" value="<%= @venue.cuisine %>">
+      </div>
+
+      <!-- Label and input for average_price -->
+      <div class="form-group">
+        <label for="average_price" class="control-label">
+          Average price
+        </label>
+
+        <input type="text" id="average_price" name="average_price" placeholder="Average price" class="form-control" value="<%= @venue.average_price %>">
+      </div>
+
+      <!-- Label and input for website -->
+      <div class="form-group">
+        <label for="website" class="control-label">
+          Website
+        </label>
+
+        <textarea id="website" name="website" placeholder="Website" class="form-control" rows="3"><%= @venue.website %></textarea>
+      </div>
+
+      <button class="btn btn-warning">
+        Update Venue
+      </button>
+      or
+      <a href="/venues/<%= @venue.id %>">Cancel</a>
+    </form>
+  </div>
+</div>
