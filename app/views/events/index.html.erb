@@ -21,6 +21,7 @@
         <td><%= event.date %></td>
         <td><%= event.time %></td>
         <td><%= event.venue_id %></td>
+        <td><%= Venue.find_by(:id => event.venue_id).try(:name) %></td>
         <td><%= event.creator_id %></td>
         <td>
           <a href="/events/<%= event.id %>" class="btn btn-primary">Show</a>

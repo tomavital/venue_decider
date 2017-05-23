@@ -1,11 +1,11 @@
 <!-- Validation failure messages -->
 <% if @event.errors.any? %>
-  <% @event.errors.full_messages.each do |message| %>
-    <div class="alert alert-dismissable alert-danger">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <%= message %>
-    </div>
-  <% end %>
+<% @event.errors.full_messages.each do |message| %>
+<div class="alert alert-dismissable alert-danger">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <%= message %>
+</div>
+<% end %>
 <% end %>
 
 <div class="page-header">
@@ -41,8 +41,8 @@
         <label for="venue_id" class="control-label">
           Venue
         </label>
-
-        <input type="text" id="venue_id" name="venue_id" placeholder="Venue" class="form-control" value="<%= @event.venue_id %>">
+        <%= select_tag(:venue_id, options_from_collection_for_select(Venue.all, :id, :name, @event.venue_id), :class => "form-control") %>
+        <!-- <input type="text" id="venue_id" name="venue_id" placeholder="Venue" class="form-control" value="<%= @event.venue_id %>"> -->
       </div>
 
       <!-- Label and input for creator_id -->
