@@ -21,7 +21,8 @@
         <td><%= venue.name %></td>
         <td><%= venue.address %></td>
         <td><%= Cuisine.find_by(:id => venue.cuisine).try(:cuisine_name) %></td>
-        <td><%= venue.average_price %></td>
+        <td><%= Price.find_by(:id => venue.average_price).try(:range) %></td>
+        <!-- <td><%= venue.average_price %></td> -->
         <td>
           <a href="/venues/<%= venue.id %>" class="btn btn-primary">Show</a>
           <a href="/venues/<%= venue.id %>/edit" class="btn btn-warning">Edit</a>
