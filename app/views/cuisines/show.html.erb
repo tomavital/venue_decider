@@ -26,6 +26,8 @@
 </div>
 
 <ul>
-
+  <% Venue.where(:cuisine => @cuisine.id).each do |venue| %>
+  <li><a href="/venues/<%=venue.id%>"><%= venue.name %></a> </li>
+  <% end %>
 
 </ul>
