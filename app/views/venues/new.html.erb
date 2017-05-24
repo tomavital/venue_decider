@@ -50,8 +50,8 @@
         <label for="average_price" class="control-label">
           Average price
         </label>
-
-        <input type="text" id="average_price" name="average_price" placeholder="Average price" class="form-control" value="<%= @venue.average_price %>">
+        <%= select_tag(:average_price, options_from_collection_for_select(Price.all, :id, :range, @venue.average_price), :class => "form-control") %>
+        <!-- <input type="text" id="average_price" name="average_price" placeholder="Average price" class="form-control" value="<%= @venue.average_price %>"> -->
       </div>
 
       <!-- Label and input for website -->

@@ -19,24 +19,25 @@
 
 
       <dt>Average price</dt>
-      <dd><%= @venue.average_price %></dd>
+      <!-- <dd><%= @venue.average_price %></dd> -->
+      <dd><a href="/prices/<%=@venue.average_price%>">
+        <%= Price.find_by(:id => @venue.average_price).range %>
+        <dt>Website</dt>
+        <a href="<%= @venue.website %>">
+          <dd><%= @venue.website %></dd></a>
 
-      <dt>Website</dt>
-      <a href="<%= @venue.website %>">
-      <dd><%= @venue.website %></dd></a>
+        </dl>
 
-    </dl>
-
-    <div class="btn-group btn-group-justified">
-      <a href="/venues" class="btn btn-primary">
-        Back
-      </a>
-      <a href="/venues/<%= @venue.id %>/edit" class="btn btn-warning">
-        Edit
-      </a>
-      <a href="/delete_venue/<%= @venue.id %>" class="btn btn-danger" rel="nofollow">
-        Delete
-      </a>
+        <div class="btn-group btn-group-justified">
+          <a href="/venues" class="btn btn-primary">
+            Back
+          </a>
+          <a href="/venues/<%= @venue.id %>/edit" class="btn btn-warning">
+            Edit
+          </a>
+          <a href="/delete_venue/<%= @venue.id %>" class="btn btn-danger" rel="nofollow">
+            Delete
+          </a>
+        </div>
+      </div>
     </div>
-  </div>
-</div>

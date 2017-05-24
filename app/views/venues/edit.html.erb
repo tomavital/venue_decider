@@ -1,11 +1,11 @@
 <!-- Validation failure messages -->
 <% if @venue.errors.any? %>
-  <% @venue.errors.full_messages.each do |message| %>
-    <div class="alert alert-dismissable alert-danger">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <%= message %>
-    </div>
-  <% end %>
+<% @venue.errors.full_messages.each do |message| %>
+<div class="alert alert-dismissable alert-danger">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <%= message %>
+</div>
+<% end %>
 <% end %>
 
 <div class="page-header">
@@ -41,7 +41,7 @@
         <label for="cuisine" class="control-label">
           Cuisine
         </label>
-  <%= select_tag(:cuisine, options_from_collection_for_select(Cuisine.all, :id, :cuisine_name, @venue.cuisine), :class => "form-control") %>
+        <%= select_tag(:cuisine, options_from_collection_for_select(Cuisine.all, :id, :cuisine_name, @venue.cuisine), :class => "form-control") %>
         <!-- <input type="text" id="cuisine" name="cuisine" placeholder="Cuisine" class="form-control" value="<%= @venue.cuisine %>"> -->
       </div>
 
@@ -51,8 +51,10 @@
           Average price
         </label>
 
-        <input type="text" id="average_price" name="average_price" placeholder="Average price" class="form-control" value="<%= @venue.average_price %>">
+        <%= select_tag(:average_price, options_from_collection_for_select(Price.all, :id, :range, @venue.average_price), :class => "form-control") %>
       </div>
+        <!-- <input type="text" id="average_price" name="average_price" placeholder="Average price" class="form-control" value="<%= @venue.average_price %>">
+      </div> -->
 
       <!-- Label and input for website -->
       <div class="form-group">
