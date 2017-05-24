@@ -33,7 +33,7 @@
           Time
         </label>
 
-        <input type="text" id="time" name="time" placeholder="Time" class="form-control" value="<%= @event.time %>">
+        <input type="text" id="time" name="time" placeholder="Time" class="form-control" value="<%= @event.time.to_s.gsub("2000-01-01","") %>">
       </div>
 
       <!-- Label and input for venue_id -->
