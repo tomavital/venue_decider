@@ -13,8 +13,11 @@
       <!-- <dd><%= @time %></dd> -->
 
       <dt>Venue</dt>
-      <dd><%= @event.venue_id %></dd>
+      <!-- <dd><%= @event.venue_id %></dd> -->
+      <dd><a href="/venues/<%=@event.venue_id%>">
+        <%= Venue.find_by(:id => @event.venue_id).name %>
 
+      </a></dd>
       <dt>Creator</dt>
       <dd><%= @event.creator_id %></dd>
 
