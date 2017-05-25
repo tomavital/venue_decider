@@ -41,3 +41,9 @@
         </div>
       </div>
     </div>
+    <ul>
+      <% Event.where(:venue_id => @venue.id).each do |event| %>
+      <li><a href="/events/<%=event.id%>"><%= event.date %></a> </li>
+      <% end %>
+
+    </ul>
