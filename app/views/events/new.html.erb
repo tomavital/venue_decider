@@ -24,7 +24,7 @@
           Date
         </label>
 
-        <input type="text" id="date" name="date" placeholder="Date" class="form-control" value="<%= @event.date %>">
+        <input type="text" id="date" name="date" placeholder="Date" class="form-control" value="<%= Date.today %>">
       </div>
 
       <!-- Label and input for time -->
@@ -33,7 +33,7 @@
           Time
         </label>
 
-        <input type="text" id="time" name="time" placeholder="Time" class="form-control" value="<%= @event.time %>">
+        <input type="text" id="time" name="time" placeholder="Time" class="form-control" value=" 20:30:00 UTC">
       </div>
 
       <!-- Label and input for venue_id -->
