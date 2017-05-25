@@ -24,7 +24,7 @@ class EventsController < ApplicationController
     @event.time = params[:time]
     @event.venue_id = params[:venue_id]
     @event.creator_id = params[:creator_id]
-
+    @event.title = params[:title]
     save_status = @event.save
 
     if save_status == true
@@ -47,6 +47,7 @@ class EventsController < ApplicationController
     @event.time = params[:time]
     @event.venue_id = params[:venue_id]
     @event.creator_id = params[:creator_id]
+    @event.title = params[:title]
 
     save_status = @event.save
 
