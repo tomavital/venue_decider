@@ -17,12 +17,48 @@
       <tr>
         <td><%= cuisine.cuisine_name %></td>
         <td>
-          <a href="/cuisines/<%= cuisine.id %>" class="btn btn-primary">Show</a>
-          <a href="/cuisines/<%= cuisine.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_cuisine/<%= cuisine.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
-        </td>
-      </tr>
-      <% end %>
-    </table>
+          <% if @preference.errors.any? %>
+          <% @preference.errors.full_messages.each do |message| %>
+          <div class="alert alert-dismissable alert-danger">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <%= message %>
+          </div>
+          <% end %>
+          <% end %>
+
+
+
+
+          <form action="/create_preference" method="post">
+            <!-- Hidden input for authenticity token to protect from forgery -->
+            <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+            <!-- Label and input for user_id -->
+
+
+
+            <input type="hidden" name="user_id"  value="<%= current_user.id%>">
+
+            <!-- Label and input for cuisine_id -->
+
+
+            <input type="hidden" name="cuisine_id"  value="<%=  cuisine.id%>">
+
+
+            <div>
+              <button class="btn btn-info">
+                Like
+              </button>
+
+            </form>
+
+
+            <a href="/cuisines/<%= cuisine.id %>" class="btn btn-primary">Show</a>
+            <a href="/cuisines/<%= cuisine.id %>/edit" class="btn btn-warning">Edit</a>
+            <a href="/delete_cuisine/<%= cuisine.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
   </div>
-</div>

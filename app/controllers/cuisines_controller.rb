@@ -1,7 +1,7 @@
 class CuisinesController < ApplicationController
   def index
     @cuisines = Cuisine.all
-
+    @preference = Preference.new
     render("cuisines/index.html.erb")
   end
 
