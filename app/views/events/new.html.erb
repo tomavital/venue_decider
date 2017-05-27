@@ -48,15 +48,7 @@
     </div>
 
     <!-- Label and input for creator_id -->
-    <div class="form-group">
-      <label for="creator_id" class="control-label">
-        Creator
-      </label>
-
-
-
-      <input type="text" id="creator_id" name="creator_id" placeholder="Creator" class="form-control" value="<%= @event.creator_id %>">
-    </div>
+    <input type="hidden" name="creator_id"  value="<%= current_user.id%>">
 
     <div class="form-group">
       <label for="title" class="control-label">

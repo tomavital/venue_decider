@@ -20,11 +20,9 @@
 
       <!-- Label and input for user_id -->
       <div class="form-group">
-        <label for="user_id" class="control-label">
-          User
-        </label>
 
-        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @preference.user_id %>">
+
+        <input type="hidden" name="user_id"  value="<%= current_user.id%>">
       </div>
 
       <!-- Label and input for cuisine_id -->
@@ -33,8 +31,8 @@
           Cuisine
         </label>
 
-        <input type="text" id="cuisine_id" name="cuisine_id" placeholder="Cuisine" class="form-control" value="<%= @preference.cuisine_id %>">
-      </div>
+        <%= select_tag(:cuisine_id, options_from_collection_for_select(Cuisine.all, :id, :cuisine_name, @preference.cuisine_id), :class => "form-control") %>
+
 
       <button class="btn btn-success">
         Create Preference
