@@ -21,7 +21,7 @@
 
 
 
-        <td><%= myevent.title %></td>
+        <td><a href="/events/<%=myevent.id%>"><%= myevent.title %></a></td>
         <td><%= myevent.date %></td>
         <td><a href="/venues/<%=myevent.venue_id%>">
           <%= Venue.find_by(:id => myevent.venue_id).name %></a></td>
