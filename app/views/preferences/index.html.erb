@@ -16,8 +16,8 @@
 
       <% @preferences.each do |preference| %>
       <tr>
-        <td><%= preference.user_id %></td>
-        <td><%= preference.cuisine_id %></td>
+        <td><%= User.find_by(:id => preference.user_id).try(:first_name) %> <%= User.find_by(:id => preference.user_id).try(:last_name) %></td>
+        <td><%= Cuisine.find_by(:id => preference.cuisine_id).try(:cuisine_name) %></td>
         <td>
           <a href="/preferences/<%= preference.id %>" class="btn btn-primary">Show</a>
           <a href="/preferences/<%= preference.id %>/edit" class="btn btn-warning">Edit</a>
