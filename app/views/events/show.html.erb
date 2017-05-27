@@ -19,7 +19,8 @@
 
       </a></dd>
       <dt>Creator</dt>
-      <dd><%= @event.creator_id %></dd>
+
+    <dd>  <%= User.find_by(:id => @event.creator_id).first_name %> <%= User.find_by(:id => @event.creator_id).last_name %></dd>
       <dt>Title</dt>
       <dd><%= @event.title %></dd>
 
