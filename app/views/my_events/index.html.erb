@@ -21,10 +21,10 @@
 
 
 
-        <td><a href="/events/<%=myevent.id%>"><%= myevent.title %></a></td>
-        <td><%= myevent.date %></td>
-        <td><a href="/venues/<%=myevent.venue_id%>">
-          <%= Venue.find_by(:id => myevent.venue_id).name %></a></td>
+        <td><a href="/events/<%=myevent.event_id%>"><%= myevent.event.title %></a></td>
+        <td><%= myevent.event.date %></td>
+        <td><a href="/venues/<%=myevent.event.venue_id%>">
+          <%= Venue.find_by(:id => myevent.event.venue_id).name %></a></td>
 
 
 
