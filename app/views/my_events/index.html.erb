@@ -1,7 +1,7 @@
 <div class="page-header">
   <h1>
     My  Events
-    <a href="/events/new" class="btn btn-lg btn-success">New Event</a>
+
   </h1>
 </div>
 
@@ -27,11 +27,70 @@
         <td><a href="/venues/<%=myevent.event.venue_id%>">
           <%= Venue.find_by(:id => myevent.event.venue_id).name %></a></td>
 
+        <td>  <a href="/delete_guest/<%= myevent.id %>" class="btn btn-danger"rel="nofollow">Delete</a></td>
 
+          </tr>
 
-      </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+    <div class="page-header">
+      <h1>
+        New Event
 
-      <% end %>
-    </table>
-  </div>
-</div>
+      </h1>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <form action="/create_event" method="post">
+          <!-- Hidden input for authenticity token to protect from forgery -->
+          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+          <!-- Label and input for date -->
+          <div class="form-group">
+            <label for="date" class="control-label">
+              Date
+            </label>
+
+            <input type="text" id="date" name="date" placeholder="Date" class="form-control" value="<%= Date.today %>">
+          </div>
+
+          <!-- Label and input for time -->
+          <div class="form-group">
+            <label for="time" class="control-label">
+              Time
+            </label>
+
+            <input type="text" id="time" name="time" placeholder="Time" class="form-control" value=" 20:30:00 UTC">
+          </div>
+
+          <!-- Label and input for venue_id -->
+          <div class="form-group">
+            <label for="venue_id" class="control-label">
+              Venue
+            </label>
+
+            <!-- <input type="text" id="venue_id" name="venue_id" placeholder="Venue" class="form-control" value="<%= @event.venue_id %>">
+          </div> -->
+          <%= select_tag(:venue_id, options_from_collection_for_select(Venue.all, :id, :name, @event.venue_id), :class => "form-control") %>
+        </div>
+
+        <!-- Label and input for creator_id -->
+        <input type="hidden" name="creator_id"  value="<%= current_user.id%>">
+
+        <div class="form-group">
+          <label for="title" class="control-label">
+            Title
+          </label>
+          <input type="text" id="title" name="title" placeholder="Title" class="form-control" value="<%= @event.title %>">
+        </div>
+
+        <button class="btn btn-success">
+          Create Event
+        </button>
+        or
+        <a href="/events">Cancel</a>
+      </form>
+    </div>
+    </div>

@@ -26,7 +26,7 @@ class GuestsController < ApplicationController
     save_status = @guest.save
 
     if save_status == true
-      redirect_to("/guests/#{@guest.id}", :notice => "Guest created successfully.")
+      redirect_to("/", :notice => "Attending")
     else
       render("guests/new.html.erb")
     end
@@ -59,9 +59,9 @@ class GuestsController < ApplicationController
     @guest.destroy
 
     if URI(request.referer).path == "/guests/#{@guest.id}"
-      redirect_to("/", :notice => "Guest deleted.")
+      redirect_to("/", :notice => "Not Attending")
     else
-      redirect_to(:back, :notice => "Guest deleted.")
+      redirect_to(:back, :notice => "Not Attending")
     end
   end
 end

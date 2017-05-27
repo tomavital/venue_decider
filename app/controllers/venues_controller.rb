@@ -7,7 +7,7 @@ class VenuesController < ApplicationController
 
   def show
     @venue = Venue.find(params[:id])
-
+    @event = Event.new
     render("venues/show.html.erb")
   end
 
