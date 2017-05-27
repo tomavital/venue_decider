@@ -23,7 +23,10 @@
     <!-- <dd><%= @event.venue_id %></dd> -->
     <dd><a href="/venues/<%=@event.venue_id%>">
       <%= Venue.find_by(:id => @event.venue_id).name %></a></dd>
-
+      <dt>Cuisine</dt>
+      <dd><%= Cuisine.find_by(:id => @event.venue.cuisine).cuisine_name %></dd>
+      <dt>Price Range</dt>
+      <dd><%= Price.find_by(:id => @event.venue.average_price).range %></dd>
       <dt>Guests List</dt>
       <ul>
 
