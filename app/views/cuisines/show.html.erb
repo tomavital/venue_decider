@@ -31,3 +31,12 @@
   <% end %>
 
 </ul>
+
+<ul>
+
+  <% Preference.where(:cuisine_id => @cuisine.id).each do |preference| %>
+
+  <li><%= User.find_by(:id => preference.user_id).first_name  %></li>
+  <% end  %>
+
+</ul>

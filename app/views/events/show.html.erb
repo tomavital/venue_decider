@@ -31,12 +31,17 @@
       <a href="/events" class="btn btn-primary">
         Back
       </a>
+      <% if current_user !=nil %>
+      <% if current_user.id == @event.creator_id %>
       <a href="/events/<%= @event.id %>/edit" class="btn btn-warning">
         Edit
       </a>
       <a href="/delete_event/<%= @event.id %>" class="btn btn-danger" rel="nofollow">
         Delete
       </a>
+
+      <% end %>
+      <% end %>
     </div>
   </div>
 </div>
