@@ -27,7 +27,11 @@
           <% end %>
 
 
-
+          <% if cuisine.preferences.find_by( {:user_id => current_user.id} ) %>
+          <a href="/delete_preference/<%= cuisine.preferences.find_by({:user_id => current_user.id}).id %>" class="btn btn-link">
+            <i class="fa fa-heart"></i>
+          </a>
+          <% else %>
 
           <form action="/create_preference" method="post">
             <!-- Hidden input for authenticity token to protect from forgery -->
@@ -46,10 +50,10 @@
 
 
             <div>
-              <button class="btn btn-info">
-                Like
+              <button class="btn btn-link">
+                <i class="fa fa-heart-o"></i>
               </button>
-
+<% end %>
             </form>
 
 
