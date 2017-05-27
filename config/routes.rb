@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   # Routes for the Price resource:
   # CREATE
   get "/prices/new", :controller => "prices", :action => "new"
@@ -83,6 +84,6 @@ Rails.application.routes.draw do
   # DELETE
   get "/delete_cuisine/:id", :controller => "cuisines", :action => "destroy"
   #------------------------------
-
+root 'venues#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
