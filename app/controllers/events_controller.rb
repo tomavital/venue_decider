@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   def index
     @events = Event.all
-
+    @guest = Guest.new
     render("events/index.html.erb")
   end
 
