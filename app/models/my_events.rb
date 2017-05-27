@@ -1,4 +1,4 @@
-class Event < ApplicationRecord
+class My_event < ApplicationRecord
 has_many :users, :foreign_key => "creator_id"
   validates :creator_id, :presence => true
 
