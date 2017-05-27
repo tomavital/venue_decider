@@ -26,7 +26,7 @@ class PreferencesController < ApplicationController
     save_status = @preference.save
 
     if save_status == true
-      redirect_to("/preferences/#{@preference.id}", :notice => "Preference created successfully.")
+      redirect_to("/cuisines", :notice => "Cuisine added successfully")
     else
       render("preferences/new.html.erb")
     end
@@ -59,9 +59,9 @@ class PreferencesController < ApplicationController
     @preference.destroy
 
     if URI(request.referer).path == "/preferences/#{@preference.id}"
-      redirect_to("/", :notice => "Preference deleted.")
+      redirect_to("/", :notice => "Cuisine removed successfully")
     else
-      redirect_to(:back, :notice => "Preference deleted.")
+      redirect_to(:back, :notice => "Cuisine removed successfully")
     end
   end
 end
