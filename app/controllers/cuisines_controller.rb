@@ -7,7 +7,7 @@ class CuisinesController < ApplicationController
 
   def show
     @cuisine = Cuisine.find(params[:id])
-
+@venue = Venue.new
     render("cuisines/show.html.erb")
   end
 
