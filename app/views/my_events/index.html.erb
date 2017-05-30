@@ -15,7 +15,7 @@
         <th>Venue</th>
         <th>Remove</th>
       </tr>
-      
+
       <% @my_events.each do |myevent| %>
       <tr>
 
@@ -23,7 +23,7 @@
         <td><%= myevent.event.date %></td>
         <td><a href="/venues/<%=myevent.event.venue_id%>">
           <%= Venue.find_by(:id => myevent.event.venue_id).name %></a></td>
-          <td>  <a href="/delete_guest/<%= myevent.id %>" class="btn btn-danger"rel="nofollow">Remove Event</a></td>
+          <td>  <a href="/delete_guest/<%= myevent.id %>" class="btn btn-danger"rel="nofollow">Not attending</a></td>
         </tr>
         <% end %>
       </table>
