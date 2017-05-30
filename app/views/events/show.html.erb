@@ -1,59 +1,75 @@
 <div class="page-header">
-  <h1><%= @event.title %></h1>
-</div>
-
-<div class="row">
-  <div class="col-md-12 mb-2">
-    <dl class="dl-horizontal">
+  <h1><%= @event.title %>
     
-    </dd>
-    <dt>Creator</dt>
+  <% if @event.guests.find_by( {:user_id => current_user.id} ) %>
+  <a href="/delete_guest/<%= @event.guests.find_by({:user_id => current_user.id}).id %>" class="btn btn-link">
+    <i class="fa fa-heart"></i>
+  </a>
+  <% else %>
+  <form action="/create_guest" method="post">
+    <!-- Hidden input for authenticity token to protect from forgery -->
+    <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="event_id" value="<%= @event.id %>">
+    <input type="hidden" name="user_id" value="<%= current_user.id %>">
+    <button class="btn btn-link">
+      <i class="fa fa-heart-o"></i>
+    </button>
 
-    <dd>  <%= User.find_by(:id => @event.creator_id).first_name %> <%= User.find_by(:id => @event.creator_id).last_name %></dd>
-
-    <dt>Date</dt>
-    <dd><%= @event.date %></dd>
-
-    <dt>Time</dt>
-    <dd><%= @event.time.to_s.gsub("2000-01-01","")%></dd>
-    <!-- <dd><%= @time %></dd> -->
-
-    <dt>Venue</dt>
-    <!-- <dd><%= @event.venue_id %></dd> -->
-    <dd><a href="/venues/<%=@event.venue_id%>">
-      <%= Venue.find_by(:id => @event.venue_id).name %></a></dd>
-      <dt>Cuisine</dt>
-      <dd><%= Cuisine.find_by(:id => @event.venue.cuisine).cuisine_name %></dd>
-      <dt>Price Range</dt>
-      <dd><%= Price.find_by(:id => @event.venue.average_price).range %></dd>
-      <dt>Guests List</dt>
-      <ul>
-
-        <% Guest.where(:event_id => @event.id).each do |guest| %>
-
-      <dd>  <li><%= User.find_by(:id => guest.user_id).first_name  %></li>
-        <% end  %></li><dd>
-
-      </ul>
-
-
-    </dl>
-
-    <div class="btn-group btn-group-justified">
-      <a href="/events" class="btn btn-primary">
-        Back
-      </a>
-      <% if current_user !=nil %>
-      <% if current_user.id == @event.creator_id %>
-      <a href="/events/<%= @event.id %>/edit" class="btn btn-warning">
-        Edit
-      </a>
-      <a href="/delete_event/<%= @event.id %>" class="btn btn-danger" rel="nofollow">
-        Delete
-      </a>
-
-      <% end %>
-      <% end %>
-    </div>
+    <% end %>
   </div>
-</div>
+
+  <div class="row">
+    <div class="col-md-12 mb-2">
+      <dl class="dl-horizontal">
+
+      </dd>
+      <dt>Creator</dt>
+
+      <dd>  <%= User.find_by(:id => @event.creator_id).first_name %> <%= User.find_by(:id => @event.creator_id).last_name %></dd>
+
+      <dt>Date</dt>
+      <dd><%= @event.date %></dd>
+
+      <dt>Time</dt>
+      <dd><%= @event.time.to_s.gsub("2000-01-01","")%></dd>
+      <!-- <dd><%= @time %></dd> -->
+
+      <dt>Venue</dt>
+      <!-- <dd><%= @event.venue_id %></dd> -->
+      <dd><a href="/venues/<%=@event.venue_id%>">
+        <%= Venue.find_by(:id => @event.venue_id).name %></a></dd>
+        <dt>Cuisine</dt>
+        <dd><%= Cuisine.find_by(:id => @event.venue.cuisine).cuisine_name %></dd>
+        <dt>Price Range</dt>
+        <dd><%= Price.find_by(:id => @event.venue.average_price).range %></dd>
+        <dt>Guests List</dt>
+        <ul>
+
+          <% Guest.where(:event_id => @event.id).each do |guest| %>
+
+          <dd>  <li><%= User.find_by(:id => guest.user_id).first_name  %></li>
+            <% end  %></li><dd>
+
+            </ul>
+
+
+          </dl>
+
+          <div class="btn-group btn-group-justified">
+            <a href="/events" class="btn btn-primary">
+              Back
+            </a>
+            <% if current_user !=nil %>
+            <% if current_user.id == @event.creator_id %>
+            <a href="/events/<%= @event.id %>/edit" class="btn btn-warning">
+              Edit
+            </a>
+            <a href="/delete_event/<%= @event.id %>" class="btn btn-danger" rel="nofollow">
+              Delete
+            </a>
+
+            <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
