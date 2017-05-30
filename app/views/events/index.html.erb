@@ -27,7 +27,7 @@
         <td>
           <% if event.guests.find_by( {:user_id => current_user.id} ) %>
           <a href="/delete_guest/<%= event.guests.find_by({:user_id => current_user.id}).id %>" class="btn btn-link">
-            <i class="fa fa-heart"></i>
+            <i class="fa fa-bookmark"></i>
           </a>
           <% else %>
           <form action="/create_guest" method="post">
@@ -37,7 +37,7 @@
             <input type="hidden" name="user_id" value="<%= current_user.id %>">
             <div>
               <button class="btn btn-link">
-                <i class="fa fa-heart-o"></i>
+                <i class="fa fa-bookmark-o"></i>
               </button>
 
               <% end %>

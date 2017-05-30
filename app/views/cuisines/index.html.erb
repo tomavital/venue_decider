@@ -25,38 +25,25 @@
           </div>
           <% end %>
           <% end %>
-
-
           <% if cuisine.preferences.find_by( {:user_id => current_user.id} ) %>
           <a href="/delete_preference/<%= cuisine.preferences.find_by({:user_id => current_user.id}).id %>" class="btn btn-link">
             <i class="fa fa-heart"></i>
           </a>
           <% else %>
-
           <form action="/create_preference" method="post">
             <!-- Hidden input for authenticity token to protect from forgery -->
             <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
             <!-- Label and input for user_id -->
-
-
-
             <input type="hidden" name="user_id"  value="<%= current_user.id%>">
-
             <!-- Label and input for cuisine_id -->
-
-
             <input type="hidden" name="cuisine_id"  value="<%=  cuisine.id%>">
-
-
             <div>
               <button class="btn btn-link">
                 <i class="fa fa-heart-o"></i>
               </button>
-<% end %>
+              <% end %>
             </form>
-
-
             <a href="/cuisines/<%= cuisine.id %>" class="btn btn-primary">Show Venues</a>
 
           </td>
