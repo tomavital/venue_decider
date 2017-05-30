@@ -7,7 +7,7 @@ class PricesController < ApplicationController
 
   def show
     @price = Price.find(params[:id])
-
+  
     render("prices/show.html.erb")
   end
 

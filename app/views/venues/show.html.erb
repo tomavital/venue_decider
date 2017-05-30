@@ -9,7 +9,7 @@
       <dt>Area</dt>
       <dd><%= @venue.address %></dd>
 
-      <dt>Cuisine</dt>
+      <dt>Main Cuisine</dt>
       <dd><a href="/cuisines/<%=@venue.cuisine%>">
         <%= Cuisine.find_by(:id => @venue.cuisine).cuisine_name %>
 
