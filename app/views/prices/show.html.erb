@@ -8,7 +8,8 @@
 
 
       <h3>  <% Venue.where(:average_price => @price.id).each do |venue| %>
-        <li><a href="/venues/<%=venue.id%>"><%= venue.name %></a> </li>
+        <li><a href="/venues/<%=venue.id%>"><%= venue.name %></a>  (<%=  venue.cuisine.cuisine_name %>) </li>
+
         <% end %></h3>
 
 

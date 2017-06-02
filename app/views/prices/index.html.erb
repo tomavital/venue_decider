@@ -18,6 +18,7 @@
       <tr>
         <td><%= price.range %></td>
         <td><%= Venue.where(:average_price => price.id).count %> </td>
+
         <td>
           <a href="/prices/<%= price.id %>" class="btn btn-primary">Show</a>
 

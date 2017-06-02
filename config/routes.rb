@@ -101,7 +101,7 @@ Rails.application.routes.draw do
   # DELETE
   get "/delete_cuisine/:id", :controller => "cuisines", :action => "destroy"
   #------------------------------
-  root 'events#index'
+  root 'myevents#index'
 
   get "/users", :controller => "users", :action => "index"
   get "/users/:id", :controller => "users", :action => "show"
