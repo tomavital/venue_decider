@@ -26,7 +26,7 @@ class GuestsController < ApplicationController
     save_status = @guest.save
 
     if save_status == true
-      redirect_to("/", :notice => "Attending")
+      redirect_to("/events", :notice => "Attending")
     else
       render("guests/new.html.erb")
     end
