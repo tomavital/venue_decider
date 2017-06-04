@@ -6,7 +6,7 @@
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
 
-      
+
       <% @cuisine.preferences.each do |preference| %>
 
       <li><%= User.find_by(:id => preference.user_id).first_name  %>   <%= User.find_by(:id => preference.user_id).last_name  %>   <%= User.find_by(:id => preference.user_id).email  %></li>
