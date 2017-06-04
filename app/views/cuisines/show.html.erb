@@ -1,39 +1,30 @@
 <div class="page-header">
   <h1><%= @cuisine.cuisine_name %></h1>
 </div>
-
+<h4>Fans</h4>
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
+      <% Preference.where(:cuisine_id => @cuisine.id).each do |preference| %>
 
-      <dt>Number of Venues</dt>
-      <dd><%= Venue.where(:cuisine => @cuisine.id).count %> </dd>
-      <dt>Venues</dt>
-      <dd><ul>
-        <% Venue.where(:cuisine => @cuisine.id).each do |venue| %>
-        <li><a href="/venues/<%=venue.id%>"><%= venue.name %></a> </li>
-        <% end %></dd>
-    </dl>
+      <li><%= User.find_by(:id => preference.user_id).first_name  %>   <%= User.find_by(:id => preference.user_id).last_name  %>   <%= User.find_by(:id => preference.user_id).email  %></li>
+      <% end  %>
+
+      <p>
+
 
     <div class="btn-group btn-group-justified">
       <a href="/cuisines" class="btn btn-primary">
         Back
       </a>
-    
+
     </div>
   </div>
 </div>
 
 
-<h4>Fans</h4>
-<ul>
 
-  <% Preference.where(:cuisine_id => @cuisine.id).each do |preference| %>
 
-  <li><%= User.find_by(:id => preference.user_id).first_name  %>   <%= User.find_by(:id => preference.user_id).last_name  %>   <%= User.find_by(:id => preference.user_id).email  %></li>
-  <% end  %>
-
-</ul>
 <div class="page-header">
   <h4>Add Venue</h4>
 </div>

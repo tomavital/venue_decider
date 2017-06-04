@@ -1,4 +1,4 @@
 class Cuisine < ApplicationRecord
-  has_many :preferences
-  has_many :venues
+  has_many :preferences,  :foreign_key => "cuisine_id"
+  has_many :venues,  :foreign_key => "cuisine"
 end
