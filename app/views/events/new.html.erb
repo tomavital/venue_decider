@@ -42,9 +42,7 @@
           Venue
         </label>
 
-        <!-- <input type="text" id="venue_id" name="venue_id" placeholder="Venue" class="form-control" value="<%= @event.venue_id %>">
-      </div> -->
-      <%= select_tag(:venue_id, options_from_collection_for_select(Venue.all, :id, :name, @event.venue_id), :class => "form-control") %>
+      <%= select_tag(:venue_id, options_from_collection_for_select(Venue.order("name ASC"), :id, :name, @event.venue_id), :class => "form-control") %>
     </div>
 
     <!-- Label and input for creator_id -->
