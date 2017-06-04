@@ -40,7 +40,7 @@
       </div>
     </div>
     <ul>
-      <% Event.where(:venue_id => @venue.id).each do |event| %>
+      <% @venue.events.each do |event| %>
       <li><a href="/events/<%=event.id%>"><%= event.date %> <%= event.title %></a> </li>
       <% end %>
 
