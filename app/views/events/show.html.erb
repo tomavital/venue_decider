@@ -1,6 +1,6 @@
 <div class="page-header">
   <h1><%= @event.title %>
-    
+
   <% if @event.guests.find_by( {:user_id => current_user.id} ) %>
   <a href="/delete_guest/<%= @event.guests.find_by({:user_id => current_user.id}).id %>" class="btn btn-link">
     <i class="fa fa-heart"></i>
@@ -45,7 +45,7 @@
         <dt>Guests List</dt>
         <ul>
 
-          <% Guest.where(:event_id => @event.id).each do |guest| %>
+          <% @event.guests.each do |guest| %>
 
           <dd>  <li><%= User.find_by(:id => guest.user_id).first_name  %></li>
             <% end  %></li><dd>
