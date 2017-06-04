@@ -73,8 +73,18 @@
             </label>
 
             <input type="text" id="time" name="time" placeholder="Time" class="form-control" value=" 20:30:00 UTC">
-    
-        <input type="hidden" name="venue_id"  value="<%= current_user.id%>">
+          </div>
+
+          <!-- Label and input for venue_id -->
+          <div class="form-group">
+            <label for="venue_id" class="control-label">
+              Venue
+            </label>
+
+            <!-- <input type="text" id="venue_id" name="venue_id" placeholder="Venue" class="form-control" value="<%= @event.venue_id %>">
+          </div> -->
+          <%= select_tag(:venue_id, options_from_collection_for_select(Venue.all, :id, :name, @event.venue_id), :class => "form-control") %>
+        </div>
 
         <!-- Label and input for creator_id -->
         <input type="hidden" name="creator_id"  value="<%= current_user.id%>">
