@@ -5,80 +5,79 @@
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
-      <% Preference.where(:cuisine_id => @cuisine.id).each do |preference| %>
+      <% @cuisine.preferences.each do |preference| %>
 
       <li><%= User.find_by(:id => preference.user_id).first_name  %>   <%= User.find_by(:id => preference.user_id).last_name  %>   <%= User.find_by(:id => preference.user_id).email  %></li>
       <% end  %>
 
       <p>
+  
+        <div class="btn-group btn-group-justified">
+          <a href="/cuisines" class="btn btn-primary">
+            Back
+          </a>
 
-
-    <div class="btn-group btn-group-justified">
-      <a href="/cuisines" class="btn btn-primary">
-        Back
-      </a>
-
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
 
 
 
-<div class="page-header">
-  <h4>Add Venue</h4>
-</div>
+    <div class="page-header">
+      <h4>Add Venue</h4>
+    </div>
 
-<div class="row">
-  <div class="col-md-12">
-    <form action="/create_venue" method="post">
-      <!-- Hidden input for authenticity token to protect from forgery -->
-      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+    <div class="row">
+      <div class="col-md-12">
+        <form action="/create_venue" method="post">
+          <!-- Hidden input for authenticity token to protect from forgery -->
+          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <!-- Label and input for name -->
-      <div class="form-group">
-        <label for="name" class="control-label">
-          Name
-        </label>
+          <!-- Label and input for name -->
+          <div class="form-group">
+            <label for="name" class="control-label">
+              Name
+            </label>
 
-        <textarea id="name" name="name" placeholder="Name" class="form-control" rows="1"><%= @venue.name %></textarea>
+            <textarea id="name" name="name" placeholder="Name" class="form-control" rows="1"><%= @venue.name %></textarea>
+          </div>
+
+          <!-- Label and input for address -->
+          <div class="form-group">
+            <label for="address" class="control-label">
+              Address
+            </label>
+
+            <textarea id="address" name="address" placeholder="Address" class="form-control" rows="1"><%= @venue.address %></textarea>
+          </div>
+
+          <!-- Label and input for cuisine -->
+          <input type="hidden" name="cuisine"  value="<%= @cuisine.id%>">
+
+          <!-- Label and input for average_price -->
+          <div class="form-group">
+            <label for="average_price" class="control-label">
+              Average price
+            </label>
+            <%= select_tag(:average_price, options_from_collection_for_select(Price.all, :id, :range, @venue.average_price), :class => "form-control") %>
+            <!-- <input type="text" id="average_price" name="average_price" placeholder="Average price" class="form-control" value="<%= @venue.average_price %>"> -->
+          </div>
+
+          <!-- Label and input for website -->
+          <div class="form-group">
+            <label for="website" class="control-label">
+              Website
+            </label>
+
+            <textarea id="website" name="website" placeholder="Website" class="form-control" rows="1"><%= @venue.website %></textarea>
+          </div>
+
+          <button class="btn btn-success">
+            Create Venue
+          </button>
+          or
+          <a href="/venues">Cancel</a>
+        </form>
       </div>
-
-      <!-- Label and input for address -->
-      <div class="form-group">
-        <label for="address" class="control-label">
-          Address
-        </label>
-
-        <textarea id="address" name="address" placeholder="Address" class="form-control" rows="1"><%= @venue.address %></textarea>
-      </div>
-
-      <!-- Label and input for cuisine -->
-    <input type="hidden" name="cuisine"  value="<%= @cuisine.id%>">
-
-      <!-- Label and input for average_price -->
-      <div class="form-group">
-        <label for="average_price" class="control-label">
-          Average price
-        </label>
-        <%= select_tag(:average_price, options_from_collection_for_select(Price.all, :id, :range, @venue.average_price), :class => "form-control") %>
-        <!-- <input type="text" id="average_price" name="average_price" placeholder="Average price" class="form-control" value="<%= @venue.average_price %>"> -->
-      </div>
-
-      <!-- Label and input for website -->
-      <div class="form-group">
-        <label for="website" class="control-label">
-          Website
-        </label>
-
-        <textarea id="website" name="website" placeholder="Website" class="form-control" rows="1"><%= @venue.website %></textarea>
-      </div>
-
-      <button class="btn btn-success">
-        Create Venue
-      </button>
-      or
-      <a href="/venues">Cancel</a>
-    </form>
-  </div>
-</div>
+    </div>

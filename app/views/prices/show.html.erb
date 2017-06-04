@@ -7,7 +7,7 @@
     <dl class="dl-horizontal">
 
 
-      <h4>  <% Venue.where(:average_price => @price.id).each do |venue| %>
+      <h4>  <% @price.venues.each do |venue| %>
         <li><a href="/venues/<%=venue.id%>"><%= venue.name %></a>  (<%=  venue.cuisine.cuisine_name %>), <%=  venue.address %> </li>
 
         <% end %></h4>
@@ -20,7 +20,7 @@
         Back
       </a>
 
-      
+
     </div>
   </div>
 </div>
