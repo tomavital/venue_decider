@@ -20,7 +20,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new
 
-    @event.date = Chronic.parse(params[:date])
+    @event.date = params[:date]
     @event.time = params[:time]
     @event.venue_id = params[:venue_id]
     @event.creator_id = params[:creator_id]
@@ -43,7 +43,7 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
 
-    @event.date = Chronic.parse(params[:date])
+    @event.date = params[:date]
     @event.time = params[:time]
     @event.venue_id = params[:venue_id]
     @event.creator_id = params[:creator_id]
