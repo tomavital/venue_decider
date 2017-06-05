@@ -1,7 +1,7 @@
 <div class="page-header">
   <h1><%= @cuisine.cuisine_name %></h1>
 </div>
-<h4>Fans</h4>
+<h3>Fans</h3>
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
@@ -13,7 +13,10 @@
       <% end  %>
 
       <p>
-  
+<h3>Venues</h3>
+        <% @cuisine.venues.each do |venue| %>
+        <li><a href="/venues/<%=venue.id%>"><%= venue.name %></a>, <%=  venue.address %> </li>
+        <% end  %>
         <div class="btn-group btn-group-justified">
           <a href="/cuisines" class="btn btn-primary">
             Back

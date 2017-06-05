@@ -76,31 +76,31 @@
           </div>
 
           <!-- Label and input for venue_id -->
-          <div class="form-group">
-            <label for="venue_id" class="control-label">
-              Venue
-            </label>
+          <!-- <div class="form-group">
+          <label for="venue_id" class="control-label">
+          Venue
+        </label>
 
-            <!-- <input type="text" id="venue_id" name="venue_id" placeholder="Venue" class="form-control" value="<%= @event.venue_id %>">
-          </div> -->
-          <%= select_tag(:venue_id, options_from_collection_for_select(Venue.all, :id, :name, @event.venue_id), :class => "form-control") %>
-        </div>
+        <!-- <input type="text" id="venue_id" name="venue_id" placeholder="Venue" class="form-control" value="<%= @event.venue_id %>">
+      </div> -->
+      <!-- <%= select_tag(:venue_id, options_from_collection_for_select(Venue.all, :id, :name, @event.venue_id), :class => "form-control") %>
+    </div> -->
+    <input type="hidden" name="venue_id"  value="<%= @venue.id%>">
+    <!-- Label and input for creator_id -->
+    <input type="hidden" name="creator_id"  value="<%= current_user.id%>">
 
-        <!-- Label and input for creator_id -->
-        <input type="hidden" name="creator_id"  value="<%= current_user.id%>">
-
-        <div class="form-group">
-          <label for="title" class="control-label">
-            Title
-          </label>
-          <input type="text" id="title" name="title" placeholder="Title" class="form-control" value="<%= @event.title %>">
-        </div>
-
-        <button class="btn btn-success">
-          Create Event
-        </button>
-        or
-        <a href="/events">Cancel</a>
-      </form>
+    <div class="form-group">
+      <label for="title" class="control-label">
+        Title
+      </label>
+      <input type="text" id="title" name="title" placeholder="Title" class="form-control" value="<%= @event.title %>">
     </div>
-    </div>
+
+    <button class="btn btn-success">
+      Create Event
+    </button>
+    or
+    <a href="/events">Cancel</a>
+  </form>
+</div>
+</div>
